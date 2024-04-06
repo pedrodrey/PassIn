@@ -26,6 +26,7 @@ public class GetAllAttendeesByEventIdUseCase
                 Id = attendee.Id,
                 Name = attendee.Name,
                 Email = attendee.Email,
+                CreatedAt = attendee.Created_At,
                 CheckedInAt = attendee.CheckIn?.Created_at
             }).ToList()
         };

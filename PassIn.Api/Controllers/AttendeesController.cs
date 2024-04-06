@@ -10,10 +10,12 @@ namespace PassIn.Api.Controllers;
 public class AttendeesController : ControllerBase
 {
     [HttpPost]
-    [Route("{id}/register")]
-    [ProducesResponseType(typeof(ResponseRegisterJson), StatusCodes.Status201Created)]
+    [Route("{eventid}/register")]
+    [ProducesResponseType(typeof(ResponseRegisteredJson), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status409Conflict)]
+
     public IActionResult Register([FromRoute] Guid eventId, [FromBody] RequestRegisterEventJson request)
     {
         var useCase = new RegisterAttendeeOnEventUseCase();
@@ -25,7 +27,7 @@ public class AttendeesController : ControllerBase
 
     [HttpGet]
     [Route("{eventId}")]
-    [ProducesResponseType(typeof(ResponseRegisterJson), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ResponseAllAttendeesJson), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
     public IActionResult GetAll([FromRoute] Guid eventId)
     {

@@ -16,7 +16,7 @@ public class RegisterAttendeeOnEventUseCase
     {
         _dbContext = new PassInDbContext();
     }
-    public ResponseRegisterJson Execute(Guid eventId, RequestRegisterEventJson request)
+    public ResponseRegisteredJson Execute(Guid eventId, RequestRegisterEventJson request)
     {
         Validate(eventId, request);
 
@@ -31,7 +31,7 @@ public class RegisterAttendeeOnEventUseCase
         _dbContext.Attendees.Add(entity);
         _dbContext.SaveChanges();
 
-        return new ResponseRegisterJson
+        return new ResponseRegisteredJson
         {
             Id = entity.Id,
         };

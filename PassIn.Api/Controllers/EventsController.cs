@@ -20,7 +20,7 @@ public class EventsController : ControllerBase
         return Created(string.Empty, response);
     }
 
-    [HttpPost]
+    [HttpGet]
     [Route("{id}")]
     [ProducesResponseType(typeof(ResponseEventJson), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
